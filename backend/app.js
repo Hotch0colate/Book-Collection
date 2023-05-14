@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', require('./routes/index'));
-// app.use('/user', require('./routes/users'));
+app.use('/users', require('./routes/users'));
 app.use('/book', require('./routes/book'));
 
 

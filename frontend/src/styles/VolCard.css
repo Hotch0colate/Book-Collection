@@ -1,0 +1,29 @@
+.volcard {
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    border-radius: 10px 10px 10px 10px;
+    touch-action: manipulation;
+    border-width: 0;
+}
+
+.number {
+    text-align: center;
+    background-color: transparent;
+}
+
+.own {
+    background-color: #ece914;
+}
+
+.own .number {
+    color: black;
+}
+
+.not-own {
+    background-color: #484c5c;
+}
+
+.not-own .number {
+    color: white;
+}

@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const RequestSchema = new mongoose.Schema({
-    request_book: String,
-    request_url: String,
+    request_description: String,
+    url_ref: String,
     request_updated: { type: Date, default: Date.now }
 })
 

@@ -1,0 +1,164 @@
+.form-login {
+    border: 1px solid rgba(255, 255, 255, 0.242);
+    width: 25%;
+    margin: auto;
+    margin-top: 150px;
+    border-radius: 15px 15px 15px 15px;
+    line-height: 0.8;
+}
+
+.form-signup {
+    border: 1px solid rgba(255, 255, 255, 0.242);
+    width: 25%;
+    margin: auto;
+    margin-top: 150px;
+    border-radius: 15px 15px 15px 15px;
+    line-height: 0.8;
+}
+
+.form-request {
+    border: 2px solid rgba(255, 255, 255, 0.242);
+    width: 35%;
+    height: 750px;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 15px 15px 15px 15px;
+    line-height: 0.8;
+}
+
+.title-login {
+    font-size: 20px;
+    text-align: center;
+    justify-content: center;
+}
+
+.title-login {
+    font-size: 20px;
+    text-align: center;
+    justify-content: center;
+}
+
+.title-signup {
+    font-size: 20px;
+    text-align: center;
+    justify-content: center;
+}
+
+.title-request {
+    font-size: 20px;
+    text-align: center;
+    justify-content: center;
+}
+
+.title-login h1 {
+    font-size: 50px;
+    margin-top: 35px;
+}
+
+.title-login h1:hover {
+    color: #6fff74;
+}
+
+.title-signup h1 {
+    font-size: 50px;
+    margin-top: 35px;
+}
+
+.title-signup h1:hover {
+    color: #6fff74;
+}
+
+.title-request h1 {
+    font-size: 50px;
+    margin-top: 35px;
+}
+
+.title-request h1:hover {
+    color: #6fff74;
+}
+
+.title-login p {
+    text-align: left;
+    margin-left: 10%;
+    margin-top: 80px;
+}
+
+.title-signup p {
+    text-align: left;
+    margin-left: 10%;
+    margin-top: 80px;
+}
+
+.title-request p {
+    text-align: left;
+    margin-left: 10%;
+    margin-top: 80px;
+}
+
+.title-login input {
+    background-color: white;
+    border-radius: 10px;
+    height: 32px;
+    width: 80%;
+    color: black;
+    font-size: 15px;
+}
+
+.title-signup input {
+    background-color: white;
+    border-radius: 10px;
+    height: 32px;
+    width: 80%;
+    color: black;
+    font-size: 15px;
+}
+
+.title-request input {
+    background-color: white;
+    border-radius: 10px;
+    height: 32px;
+    width: 80%;
+    color: black;
+    font-size: 15px;
+    text-align: start;
+}
+
+.title-login button {
+    text-align: center;
+    margin-top: 10%;
+    border: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border-radius: 20px;
+    width: 150px;
+    height: 40px;
+    font-size: 20px;
+}
+
+.title-signup button {
+    text-align: center;
+    margin-top: 10%;
+    border: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border-radius: 20px;
+    width: 150px;
+    height: 40px;
+    font-size: 20px;
+}
+
+.title-request button {
+    text-align: center;
+    margin-top: 10%;
+    border: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border-radius: 20px;
+    width: 150px;
+    height: 40px;
+    font-size: 20px;
+}
+
+#desc {
+    height: 200px;
+}

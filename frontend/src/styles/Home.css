@@ -1,27 +1,24 @@
+main {
+    background-color: #25272a;
+}
+
 .container-home {
     display: flex;
+    position: relative;
     flex-direction: row;
     justify-content: start;
     padding: 32px;
     gap: 32px;
-    position: relative;
-    border: 1px solid red;
-}
-
-.container-center {
-    border: 5px solid red;
-    position: relative;
 }
 
 .container-card {
-    border: 1px solid pink;
+    /* border: 1px solid pink; */
     box-sizing: border-box;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 32px;
     right: inherit;
-    
 }
 
 .flex-col {
@@ -30,13 +27,34 @@
     align-items: center;
 }
 
+.bg-Bigcard {
+    background-color: #444444d0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 50;
+    top: 0;
+}
+
+.Bigcard-body {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background-color: none;
+    padding-top: 120px;
+}
+
+.btn {
+    display: block;
+}
+
 .container-filter {
     flex-shrink: 0;
     width: 12%;
     /* position: sticky; */
     top: 100px;
     height: auto;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     /* margin-left: 1%; */
 }
 
@@ -68,6 +86,7 @@
     width: 100%;
     transition: all 0.05s ease-in-out;
 }
+
 .filter:hover {
     background-color: #6fff74;
     color: black;
@@ -103,7 +122,7 @@
     transition: all 0.1s ease-in-out;
 }
 
-.search-input:hover{
+.search-input:hover {
     transform: scale(1.05);
 }
 
@@ -123,6 +142,7 @@
     justify-content: center;
     align-items: center;
 }
+
 
 /* input[type="checkbox"] {
     margin-top: 5%;

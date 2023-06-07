@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { signOutRequest } from "../services/request";
 
 const Navbar = () => {
+  const admin = localStorage.getItem("admin") === 'true'
+
   const pages = [
     {
       name: "HOME",
@@ -20,13 +22,30 @@ const Navbar = () => {
     },
   ];
 
-  const pages2 = [
+  const logoutPage = [
     {
       name: "LOGOUT",
       link: "/",
     },
   ];
 
+  const adminPage = [
+    {
+      name: "ADMIN",
+      link: "/admin"
+    }
+    ,
+    {
+      name: "ADDBOOK",
+      link: "/addbook"
+    }
+    ,
+    {
+      name: "REMOVEBOOK",
+      link: "/removebook"
+    }
+  ]
+  
   const navigate = useNavigate();
   return (
     <div className="navbar">
@@ -39,12 +58,23 @@ const Navbar = () => {
             </Link>
           </li>
         ))}
-        {pages2.map((page, index) => (
+        {logoutPage.map((page, index) => (
           <li className="navbar-link" key={index+pages.length}>
             <Link
               className="navbar-btn"
-              onClick={() => signOutRequest().then((data) => navigate("/"))}
+              onClick={() => signOutRequest().then((data) => {
+                console.log("gg",data)
+                console.log(localStorage.getItem("accessToken"))
+                navigate("/")})}
             >
+              {page.name}
+            </Link>
+          </li>
+        ))}
+        {/* IMPROVE: may change charanter color to red */}
+        {admin && adminPage.map((page, index) => (
+            <li className="navbar-link" key={index}>
+            <Link className="navbar-btn" to={page.link}>
               {page.name}
             </Link>
           </li>

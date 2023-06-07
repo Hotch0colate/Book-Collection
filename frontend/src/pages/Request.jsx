@@ -18,11 +18,18 @@ function RequestForm() {
     const handleSubmit = (event) => {
       event.preventDefault();
       sendRequest(formData).then((response) => {
-        console.log(response);
-        setFormData({
-          requeset_desc: '',
-          url_ref: ''
-        })
+        switch (response?.status) {
+          case 200:
+            alert("Request sent successfully!");
+            setFormData({
+              requeset_desc: '',
+              url_ref: ''
+            })
+            break;
+          case 400:
+            alert("Invalid request");
+            break;
+        }
       })
     };
 
@@ -34,11 +41,11 @@ function RequestForm() {
             <div className="title-request">
                 <h1>Request</h1>
                 <p>Description</p>
-                <input 
+                <textarea 
                 id="desc"
                 type = "text" 
-                name = "requeset_desc" 
-                value ={formData.requeset_desc} 
+                name = "request_description" 
+                value ={formData.request_description} 
                 onChange={handleChange}
                 />
                 <p>URL Reference</p>

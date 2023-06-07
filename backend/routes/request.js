@@ -19,7 +19,7 @@ router.post("/create-request", verifyToken, (req, res, next) => {
 });
 
 router.get("/all-request", verifyToken, (req, res, next) => {
-    Request.find(request_description)
+    Request.find()
         .then((request) => {
             res.json(request);
         })
@@ -29,7 +29,8 @@ router.get("/all-request", verifyToken, (req, res, next) => {
 });
 
 router.delete("/delete-request", verifyToken, (req, res, next) => {
-    Book.deleteOne({ _id: req.params.id })
+    const { url_ref, request_description } = req.query;
+    Request.deleteOne({ url_ref: url_ref, request_description: request_description })
         .then((request) => {
             res.json(request);
         })

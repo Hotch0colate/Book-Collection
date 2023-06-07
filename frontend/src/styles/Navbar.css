@@ -8,6 +8,7 @@
     top: 0;
     z-index: 999;
     border-bottom: 1px solid rgba(255, 255, 255, 0.104);
+    background-color: #25272a;
 }
 
 .navbar-list {

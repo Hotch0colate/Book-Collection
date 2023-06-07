@@ -119,11 +119,13 @@
 .card:hover .info {
     opacity: 0.9;
     transform: translateY(0px);
+    background-color: #25272a;
 }
 
 .card-aura:hover .info {
     opacity: 0.9;
     transform: translateY(0px);
+    background-color: #25272a;
 }
 
 .card .info h1 {
@@ -133,8 +135,13 @@
     width: 230px;
     height: 345px;
     color: rgb(255, 255, 255);
-    margin-left: 6%;
     line-height: 1.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 5%;
+    margin-left: 0%;
 }
 
 .card-aura .info h1 {

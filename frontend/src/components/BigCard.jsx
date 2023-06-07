@@ -3,7 +3,6 @@ import VolumeCard from "../components/VolumeCard";
 import "../styles/BigCard.css";
 import { getListBookVolInSeriesByUserId, getAllBookInSeries } from "../services/request";
 
-// TODO: onClickCloseButton make for close big card just use onClick={() => onClickCloseButton()}> on the component you use to be close button
 function BigCard({ imgPath = "../assets/photos/BL.png", bookSeries , bookTitle, onClickCloseButton}) {
   const [book, setBook] = useState([]);
   const [listBookVol, setListBookVol] = useState([]);
@@ -30,19 +29,18 @@ function BigCard({ imgPath = "../assets/photos/BL.png", bookSeries , bookTitle, 
       <div className="card_container">
         <div className="series_container">
           <h1>{bookSeries}</h1>
+          <button className="buttonclose" onClick={() => onClickCloseButton()}>close</button>
           <p>{bookTitle}</p>
         </div>
 
         <div className="vol_container">
-          <div className="vol_flex">
-            {book && Array.from(Array(bookMaxVol).keys()).map((index) => (
-              <VolumeCard
-                book_series = {bookSeries}
-                book_vol = {index+1}
-                own = {listBookVol.includes(index+1)}
-              />
-              ))}
-          </div>
+          {book && Array.from(Array(bookMaxVol).keys()).map((index) => (
+            <VolumeCard
+              book_series = {bookSeries}
+              book_vol = {index+1}
+              own = {listBookVol.includes(index+1)}
+            />
+          ))}
         </div>
       </div>
     </div>

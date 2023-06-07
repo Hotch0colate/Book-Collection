@@ -21,6 +21,7 @@ function LoginForm() {
         case 200:
           localStorage.setItem("accessToken", response.data.token);
           localStorage.setItem("userId", response.data.userId);
+          localStorage.setItem("admin",response.data.admin)
           navigate("/home");
           break;
         case 401:
@@ -34,7 +35,7 @@ function LoginForm() {
   };
 
   return (
-    <>
+    <div className="mainbox">
       <form className="form-login" onSubmit={handleSubmit}>
         <div className="title-login">
           <h1>Log in</h1>
@@ -66,7 +67,7 @@ function LoginForm() {
           </div> 
         </div>
       </form>
-    </>
+    </div>
   );
 }
 

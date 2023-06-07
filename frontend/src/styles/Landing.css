@@ -1,29 +1,39 @@
 * {
-    background-color: #25272a;
+    /* background-color: #25272a; */
     color: white;
     font-family: "ibm-plex-thai", sans-serif;
 }
 
-.nav{
+main {
+    background-color: #25272a;
+}
+
+.nav {
     height: 300px;
 }
+
 .Landing-container {
-    margin-top: 50px;
+    background-color: #2a2c2e;
+    margin-top: 80px;
     width: 80%;
-    display: flex;
+    height: 650px;
+    display: grid;
+    grid-template-columns: 46% 50%;
     margin-left: auto;
     margin-right: auto;
+    overflow: hidden;
+    /* border: 1px solid red; */
+    border-radius: 20px;
+    box-shadow: 7px 7px 7px 7px rgb(0, 0, 0, 0.5);
 }
 
 .Title-Landing {
-    width: 55%;
     font-size: 40px;
     line-height: 1.2;
 }
 
 .Title-Landing h1 {
     margin-left: 20%;
-
 }
 
 .Title-Landing button {
@@ -40,7 +50,7 @@
     transition: 0.05s ease-in-out;
 }
 
-.Title-Landing button:hover{
+.Title-Landing button:hover {
     background-color: white;
     border: 3px solid #4CAF50;
     color: #4CAF50;
@@ -59,7 +69,6 @@
 .Title-container {
     margin-top: 250px;
     width: 400px;
-    
 }
 
 .Title-container h1 {
@@ -72,29 +81,33 @@
     font-size: 20px;
     line-height: 0.5;
 }
+
 .Series-container {
     margin: auto;
     margin-top: 200px;
     width: 30%;
-
 }
-.Series-container p{
+
+.Series-container p {
     display: block;
     font-size: 30px;
 }
-.Series-container div{
+
+.Series-container div {
     display: block;
     font-size: 80px;
     text-align: center;
     margin-left: 25%;
 }
+
 .Footer-container {
     margin-top: 200px;
     text-align: center;
     font-size: 35px;
     line-height: 1.3;
 }
-.Footer-container button{
+
+.Footer-container button {
     color: #fff;
     background-color: #4CAF50;
     border: none;
@@ -106,14 +119,50 @@
     transition: 0.05s ease-in-out;
 }
 
-.Footer-container button:hover{
+.Footer-container button:hover {
     background-color: white;
     border: 3px solid #4CAF50;
     color: #4CAF50;
     transform: scale(1.02);
 }
 
-
-.Footer-container b{
+.Footer-container b {
     background-color: #4CAF50;
 }
+
+.cardmove-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.movecard {
+    /* border: 1px solid yellow; */
+    align-items: center;
+    /* position: absolute; */
+}
+
+@keyframes moving {
+    0% {
+        top: 0px
+    }
+    100% {
+        bottom: -60px
+    }
+}
+
+.card-landing1 {
+    margin-top: -145px;
+}
+
+.card-landing2 {
+    margin-top: -250px;
+}
+
+.card-landing3 {
+    margin-top: -20px;
+}
+
+.Follow {
+    margin-top: 20px;
+}
+

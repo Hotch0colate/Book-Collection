@@ -8,12 +8,15 @@ export async function getNumberBookInSeries() {
 }
 
 export async function sendRegister(formData) {
-    const response = await axios.post(
-        "http://localhost:3000/access/sign-up",
-        formData
-    );
-    console.log("User created:", response.data);
-    return true;
+    try {
+        const response = await axios.post(
+            "http://localhost:3000/access/sign-up",
+            formData
+        );
+        return response;
+    } catch (err) {
+        return err.response;
+    }
 }
 
 export async function sendLogin(formData) {
@@ -138,13 +141,16 @@ export async function sendRequest(formData) {
         },
     };
 
-    const response = await axios.post(
-        "http://localhost:3000/request/create-request",
-        formData,
-        config
-    );
-    console.log("Send succesfully:", response.data);
-    return true;
+    try {
+        const response = await axios.post(
+            "http://localhost:3000/request/create-request",
+            formData,
+            config
+        );
+        return response;
+    } catch (err) {
+        return err.response;
+    }
 }
 
 export async function signOutRequest() {
@@ -169,26 +175,26 @@ export async function signOutRequest() {
     if (response.status === 200) {
         localStorage.removeItem("accessToken");
         localStorage.removeItem("userId");
+        localStorage.removeItem("admin")
     }
     return response.data;
 }
 
-// export async function checkTokenExpire() {
-//     const accessToken = localStorage.getItem("accessToken");
+export async function checkTokenExpire() {
+    const accessToken = localStorage.getItem("accessToken");
 
-//     const config = {
-//         params: {
-//             token: accessToken,
-//         },
-//     };
-//     console.log(accessToken);
-//     const response = await axios.get(
-//         "http://localhost:3000/users/check-token-expire",
-//         config
-//     );
-//     console.log(response.data);
-//     return response.data;
-// }
+    const config = {
+        params: {
+            token: accessToken,
+        },
+    };
+    // console.log(accessToken);
+    const response = await axios.get(
+        "http://localhost:3000/users/check-token-expire",
+        config
+    );
+    return response.data;
+}
 
 export async function getAllRequest() {
     const accessToken = localStorage.getItem("accessToken");
@@ -205,5 +211,69 @@ export async function getAllRequest() {
         return response.data;
     } catch (err) {
         console.log(err);
+    }
+}
+
+export async function deleteRequest(url_ref, request_description) {
+    const accessToken = localStorage.getItem("accessToken");
+    const config = {
+        headers: {
+            authorization: accessToken,
+        },
+        params: {
+            url_ref: url_ref,
+            request_description: request_description
+        }
+    };
+    try {
+        var response = await axios.delete(
+            "http://localhost:3000/request/delete-request",
+            config
+        );
+        return response;
+    } catch (err) {
+        return err.response;
+    }
+}
+
+export async function createBook(formData) {
+    const accessToken = localStorage.getItem("accessToken");
+    const config = {
+        headers: {
+            authorization: accessToken,
+        },
+    };
+    console.log(formData);
+    try {
+        var response = await axios.post(
+            "http://localhost:3000/book/admin/create",
+            formData,
+            config
+        );
+        return response;
+    } catch (err) {
+        return err.response;
+    }
+}
+
+// /admin/delete
+export async function deleteBook(book_series) {
+    const accessToken = localStorage.getItem("accessToken");
+    const config = {
+        headers: {
+            authorization: accessToken,
+        },
+        params: {
+            book_series: book_series,
+        }
+    };
+    try {
+        var response = await axios.delete(
+            "http://localhost:3000/book/admin/delete",
+            config
+        );
+        return response;
+    } catch (err) {
+        return err.response;
     }
 }

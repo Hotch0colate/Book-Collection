@@ -1,13 +1,13 @@
 const express = require("express");
-const router = express.Router();
 const Book = require("../models/Book_db.js");
 const mongoose = require("mongoose");
 const Users = require("../models/User_db.js");
 const verifyToken = require("../token.js");
 const jwt = require('jsonwebtoken');
-// const { collection } = require('../models/Book_db.js');
-const app = express();
 const cors = require("cors");
+
+const router = express.Router();
+const app = express();
 
 app.use(cors());
 
@@ -50,7 +50,6 @@ router.get("/all-collection-series", verifyToken, (req, res, next) => {
         .then((user) => {
             const bookCollection = user.bookcollection;
             bookCollection.forEach((val, key) => bookSeriesHaved.push(key));
-            console.log(bookCollection);
         })
         .catch((err) => {
             next(err);
@@ -71,7 +70,6 @@ router.get("/all-collection-series", verifyToken, (req, res, next) => {
 // show all book data in your collection
 router.get("/all-book-vol-collection-series", verifyToken, (req, res, next) => {
     const { id, book_series } = req.query;
-    console.log(id);
     let bookSeriesHaved = [];
     Users.findById(id)
         .then((user) => {
@@ -87,39 +85,16 @@ router.get("/all-book-vol-collection-series", verifyToken, (req, res, next) => {
         });
 });
 
-// router.get("/check-token-expire", (req, res, next) => {
-//     const { token } = req.query;
-//     if (!token) return res.json(false);
-//     jwt.verify(token, 'secret', (err, decoded) => {
-//         if (err) {
-//             console.log(token);
-//             return req.json(false)
-//         }
-//         return req.json(true)
-//     });
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+router.get("/check-token-expire", (req, res, next) => {
+    const { token } = req.query;
+    if (!token) return res.json(false);
+    jwt.verify(token, 'secret', (err, decoded) => {
+        if (err) {
+            return res.json(false)
+        }
+        return res.json(true)
+    });
+});
 
 // show  all series in my collection
 router.get("/:userId/collection/series", verifyToken, (req, res, next) => {
@@ -173,18 +148,8 @@ router.delete(
             })
             .catch((err) => {
                 next(err);
-            });
-        console.log("delete");
+            });;
     }
 );
-
-function isEmpty(obj) {
-    for (const prop in obj) {
-        if (Object.hasOwn(obj, prop)) {
-            return false;
-        }
-    }
-    return true;
-}
 
 module.exports = router;

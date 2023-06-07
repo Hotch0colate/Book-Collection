@@ -1,11 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getNumberBookInSeries } from "../services/request";
+import { getNumberBookInSeries, getAllSeries } from "../services/request";
 import "../styles/Landing.css";
 import Navlanding from "../components/Navlanding";
+import Card from "../components/Card";
 
 function Landing() {
   const [seriesCount, setseriesCount] = useState("");
+  const [allSeries, setAllSeries] = useState([]);
+  const [searchName, setSearchName] = useState("");
+  const [filterName, setFilterName] = useState("");
+  let indexBigCard = -1;
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+
+  useEffect(() => {
+    getAllSeries().then((series) => {
+      setAllSeries(series);
+    });
+  }, []);
+
+  useEffect(() => {
+    setSelectedIndex(-1);
+  }, [searchName]);
 
   useEffect(() => {
     getNumberBookInSeries().then((res) => {
@@ -14,7 +30,7 @@ function Landing() {
   }, []);
 
   return (
-    <>
+    <main>
       <Navlanding />
       <div className="Landing-container">
         <div className="Title-Landing">
@@ -26,6 +42,74 @@ function Landing() {
               Let's go ❯{" "}
             </button>
           </Link>
+        </div>
+        <div className="cardmove-container">
+          <div className="movecard">
+            <div>
+              <div className="card-landing1">
+                <Card
+                bookSeries="Blue Lock"
+                imgPath="https://prodimage.images-bn.com/pimages/9781646516544_p0_v3_s1200x630.jpg"
+              />
+              </div>
+              <div className="Follow">
+                <Card
+                bookSeries="Dandadan"
+                imgPath="https://cdn-local.mebmarket.com/meb/server1/185754/Thumbnail/book_detail_large.gif?2"
+              />
+              </div> 
+              <div className="Follow">
+                <Card
+                bookSeries="DR.STONE"
+                imgPath="https://cdn-local.mebmarket.com/meb/server1/202934/Thumbnail/book_detail_large.gif?2"
+              />
+              </div>     
+            </div>
+          </div>
+          <div className="movecard">
+            <div>
+              <div className="card-landing2">
+                <Card
+                bookSeries="โตเกียว รีเวนเจอร์ส"
+                  imgPath="https://cdn-local.mebmarket.com/meb/server1/198224/Thumbnail/book_detail_large.gif?2"
+                />
+              </div>
+              <div className="Follow">
+                <Card
+                bookSeries="KAIJYU No.8"
+                  imgPath="https://upload.wikimedia.org/wikipedia/en/c/cd/Kaiju_No_8.jpg"
+                />
+              </div>
+              <div className="Follow">
+                <Card
+                bookSeries="Chain Saw Man"
+                  imgPath="https://animatebkk-online.com/wp-content/uploads/2021/05/ch1.jpg"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="movecard">
+            <div>
+              <div className="card-landing3">
+              <Card
+                bookSeries="WAKE UP WITH THE KISS"
+                  imgPath="https://cdn-local.mebmarket.com/meb/server1/178318/Thumbnail/book_detail_large.gif?2"
+              />
+              </div>
+              <div className="Follow">
+                <Card
+                bookSeries="เกิดใหม่เป็นลูกโอชิ"
+                  imgPath="https://1.bp.blogspot.com/-o53FVIwZxq0/YPw8UqHSd0I/AAAAAAAAAbc/thauiZwd2TIARbb_ss9eWcPtnHBWNUw_wCLcBGAsYHQ/s1417/Mang%25C3%25A1%2B%2527Oshi%2Bno%2BKo%2527%2Bultrapassa%2B1%252C5%2Bmilh%25C3%25B5es%2Bde%2Bc%25C3%25B3pias%2Bem%2Bcircula%25C3%25A7%25C3%25A3o.jpg"
+                />
+              </div>
+              <div className="Follow">
+                <Card
+                bookSeries="Chain Saw Man"
+                  imgPath="https://animatebkk-online.com/wp-content/uploads/2021/05/ch1.jpg"
+                />
+              </div>
+            </div>           
+          </div>
         </div>
       </div>
       <div>
@@ -74,7 +158,7 @@ function Landing() {
           </button>
         </Link>
       </div>
-    </>
+    </main>
   );
 }
 

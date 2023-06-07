@@ -17,14 +17,23 @@ function SignUpForm() {
   
     const handleSubmit = (event) => {
       event.preventDefault();
-      if (sendRegister(formData))
-      {
-        navigate('/login');
-      }
+      sendRegister(formData).then((response) => {
+        switch (response?.status) {
+          case 200:
+            navigate('/login');
+            break;
+          case 401:
+            alert(response.data.message);
+            break;
+          default:
+            console.log("Something went wrong")
+            break
+        }
+      })
     };
 
   return (
-    <>
+    <div className="mainbox">
     <form className="form-signup" onSubmit={handleSubmit}>
         <div className="title-signup">
             <h1>Sign up</h1>
@@ -54,7 +63,7 @@ function SignUpForm() {
             </p> 
         </div>
     </form>
-    </>
+    </div>
   )
 }
 

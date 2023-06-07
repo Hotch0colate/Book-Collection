@@ -9,7 +9,7 @@ const cors = require("cors");
 app.use(cors());
 
 //all-series
-router.get("/all-series", verifyToken, (req, res, next) => {
+router.get("/all-series", (req, res, next) => {
     Book.find()
         .then((book) => {
             res.json(book);
@@ -58,18 +58,26 @@ router.put("/admin/update/:id", verifyToken, (req, res, next) => {
 
 // create for add new series in book schema
 router.post("/admin/create", verifyToken, (req, res, next) => {
-    Book.create(req.body)
-        .then((book) => {
-            res.json(book);
-        })
-        .catch((err) => {
-            next(err);
-        });
+    const book_series = req.body.book_series;
+    Book.findOne({ book_series: book_series }).then((book) => {
+        if (book) {
+            return res.status(400).json({ book_series: "Series already exists" });
+        } else {
+            Book.create(req.body)
+                .then((book) => {
+                    res.json(book);
+                })
+                .catch((err) => {
+                    next(err);
+                });
+        }
+    });
 });
 
 // delete series
-router.delete("/admin/delete/:id", verifyToken, (req, res, next) => {
-    Book.deleteOne({ _id: req.params.id })
+router.delete("/admin/delete", verifyToken, (req, res, next) => {
+    const { book_series } = req.query
+    Book.deleteOne({ book_series: book_series })
         .then((book) => {
             res.json(book);
         })

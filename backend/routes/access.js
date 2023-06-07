@@ -13,11 +13,18 @@ app.use(cors());
 // sign-up
 router.post('/sign-up', (req, res, next) => {
     const { username, password } = req.body;
-    Users.create({ username, password })
-        .then((user) => { res.json(user); })
-        .catch((err) => { next(err) })
+    Users.findOne({ username: username })
+        .then((user) => {
+            if (user) {
+                res.status(401).json({ message: 'Username already exists' });
+            } else {
+                return Users.create({ username, password })
+                    .then((user) => { res.json(user); })
+                    .catch((err) => { next(err) })
+            }
+        })
+        .catch((err) => { next(err) });
 });
-
 
 //sign-in
 router.post('/sign-in', (req, res, next) => {
@@ -31,7 +38,8 @@ router.post('/sign-in', (req, res, next) => {
 
                 res.json({
                     "token": token,
-                    "userId": user._id
+                    "userId": user._id,
+                    "admin": username == "adminpong"
                 });
             } else {
                 res.status(401).json({ message: 'Invalid username or password' });

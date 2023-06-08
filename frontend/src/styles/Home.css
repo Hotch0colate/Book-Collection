@@ -51,7 +51,7 @@ main {
 .container-filter {
     flex-shrink: 0;
     width: 12%;
-    /* position: sticky; */
+    position: sticky;
     top: 100px;
     height: auto;
     /* border: 1px solid red; */
